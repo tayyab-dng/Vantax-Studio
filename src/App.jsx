@@ -44,11 +44,14 @@ export default function App() {
 
   // Standard smooth scroll physics for maximum performance and "buttery" feel
   const lenisOptions = {
-    duration: 1.2,
+    duration: 1.5, // Increased for a smoother, buttery feel
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     direction: 'vertical',
     gestureDirection: 'vertical',
     smooth: true,
+    smoothWheel: true,
+    wheelMultiplier: 1,
+    touchMultiplier: 2,
   };
 
   return (
