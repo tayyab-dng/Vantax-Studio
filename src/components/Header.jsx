@@ -27,7 +27,7 @@ export default function Header({ timeline }) {
                         onUpdate: (self) => {
                             if (self.direction === 1 && self.scroll() > 100) {
                                 // Scrolling down and past 100px - Hide header but leave a sliver visible
-                                gsap.to(headerRef.current, { yPercent: -88, duration: 0.4, ease: 'power3.out', overwrite: 'auto' });
+                                gsap.to(headerRef.current, { yPercent: -110, duration: 0.4, ease: 'power3.out', overwrite: 'auto' });
                             } else if (self.direction === -1 || self.scroll() <= 100) {
                                 // Scrolling up or near the top - Show header
                                 gsap.to(headerRef.current, { yPercent: 0, duration: 0.3, ease: 'power3.out', overwrite: 'auto' });
