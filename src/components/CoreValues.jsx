@@ -173,7 +173,7 @@ export default function CoreValues() {
                     {/* IEI Pakistan Logo */}
                     <div className="mb-8 md:mb-8">
                         <img
-                            src="/images/iei-logo.png"
+                            src="/images/logowhitehdr.png"
                             alt="IEI Pakistan"
                             className="h-16 md:h-20 w-auto object-contain drop-shadow-sm"
                         />

@@ -35,7 +35,7 @@ export default function App() {
 
   useLayoutEffect(() => {
     // We create the master timeline
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       const tl = gsap.timeline();
       setMasterTimeline(tl);
     });
