@@ -69,7 +69,7 @@ export default function About() {
                 </div>
 
                 {/* About Text Left Aligned - Dark Text on Yellow */}
-                <div className="font-serif text-[7vw] xs:text-[1.8rem] sm:text-[2.2rem] md:text-[clamp(1.8rem,3vw,3rem)] font-normal leading-[1.25] md:leading-[1.4] tracking-tight text-[#3D3300] space-y-4 md:space-y-8 w-full max-w-[1050px]">
+                <div className="font-serif text-[6.5vw] xs:text-[1.8rem] sm:text-[2.2rem] md:text-[clamp(1.8rem,3vw,3rem)] font-normal leading-[1.25] md:leading-[1.4] tracking-tight text-[#3D3300] space-y-4 md:space-y-8 w-full max-w-[1050px]">
                     <div className="overflow-hidden">
                         <p className="about-reveal">
                             We're a <span className="font-bold italic transition-colors duration-500 about-highlight">non-profit organization</span> founded in 2016 to transform education in remote Pakistan.
