@@ -102,75 +102,83 @@ export default function HowWeWork() {
     }, { scope: containerRef });
 
     return (
-        <section ref={containerRef} className="w-full h-auto min-h-screen lg:h-screen lg:min-h-[600px] py-10 md:py-16 lg:py-12 bg-white flex flex-col items-center justify-center overflow-hidden relative">
+        <section ref={containerRef} className="w-full h-auto min-h-screen py-16 md:py-24 bg-white flex flex-col items-center justify-center overflow-hidden relative">
 
-            {/* Expanded width to 1600px to occupy extreme screen real estate */}
-            <div className="w-full max-w-[1600px] mx-auto flex flex-col justify-center h-full z-10 px-4 md:px-8 lg:px-12">
+            <div className="w-full max-w-[1440px] mx-auto flex flex-col justify-center h-full z-10 px-4 md:px-8 lg:px-12">
 
                 {/* Header Section */}
-                <div className="hww-header w-full flex flex-col md:flex-row justify-between items-start md:items-end mb-6 md:mb-8">
+                <div className="hww-header w-full flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12">
                     <div className="flex flex-col items-start text-left">
-                        <h2 className="text-4xl md:text-5xl lg:text-[4.5rem] font-medium leading-[1.1] tracking-tight mb-4 md:mb-0">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-none tracking-tight">
                             <span className="text-black block">OUR</span>
                             <span className="text-[#ffcc00] block mt-1">PROGRAMMES</span>
                         </h2>
                     </div>
-                    <button className="bg-[#ffcc00] text-[#3D3300] font-bold text-sm md:text-base px-6 py-3 rounded-xl hover:bg-[#e6b800] transition-colors">
-                        Our Programmes
-                    </button>
+                    {/* Desktop Carousel Controls */}
+                    <div className="hidden md:flex gap-3 mt-6 md:mt-0">
+                        <button
+                            onClick={handlePrev}
+                            className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-[#ffcc00] hover:text-black transition-all duration-300 border border-black/10 active:scale-95 shadow-sm group"
+                        >
+                            <svg className="w-2.5 h-4 group-hover:-translate-x-0.5 transition-transform duration-300" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.5 15L1.5 8L8.5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </button>
+                        <button
+                            onClick={handleNext}
+                            className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-[#ffcc00] hover:text-black transition-all duration-300 border border-black/10 active:scale-95 shadow-sm group"
+                        >
+                            <svg className="w-2.5 h-4 group-hover:translate-x-0.5 transition-transform duration-300" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.5 1L8.5 8L1.5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
-                {/* Slider Card Container - Moved wrapper to relative for absolute cut-out button */}
+                {/* Slider Card Container */}
                 <div className="hww-card relative w-full flex flex-col">
 
-                    {/* The Main Dark Grey Card Background with organic broken corner for the arrow */}
-                    <div className="w-full bg-[#ffcc00] rounded-[2rem] p-0 overflow-hidden flex flex-col border border-transparent relative z-10"
-                        style={{
-                            // Center the mask directly where the 64px (w-16) white button sits (32px from top/right) with a tight 46px radius wrapper gap
-                            maskImage: typeof window !== 'undefined' && window.innerWidth >= 768
-                                ? `radial-gradient(circle 46px at right 32px top 32px, transparent 45px, black 46px)`
-                                : 'none',
-                            WebkitMaskImage: typeof window !== 'undefined' && window.innerWidth >= 768
-                                ? `radial-gradient(circle 46px at right 32px top 32px, transparent 45px, black 46px)`
-                                : 'none'
-                        }}
-                    >
+                    {/* The Main Dark Yellow Card Background */}
+                    <div className="w-full bg-[#ffcc00] rounded-[1.5rem] md:rounded-[2.5rem] p-3 md:p-6 lg:p-8 flex flex-col border border-transparent shadow-xl relative z-10 overflow-hidden">
+
                         {/* Premium Noise Grain Overlay */}
-                        <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+                        <div className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-overlay" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
 
-                        {/* Container wrapping Text padding and Image split correctly */}
-                        <div ref={contentRef} className="flex flex-col md:flex-row w-full h-full min-h-[450px] md:min-h-[500px] relative">
+                        {/* Card Content Wrapper - Fixed min-height to ensure uniform size across all slides */}
+                        <div ref={contentRef} className="flex flex-col-reverse md:flex-row w-full h-[620px] sm:h-[580px] md:h-[480px] lg:h-[540px] relative gap-6 md:gap-8 lg:gap-12">
 
-                            {/* Text Content - Shift padding inside */}
-                            <div className="w-full md:w-[50%] flex flex-col justify-between p-6 px-10 md:px-6 lg:p-14 pb-12 relative z-10 pointer-events-none">
-                                <div className="pointer-events-auto">
-                                    <span className="font-display text-[#3D3300]/40 text-5xl md:text-[5.5rem] font-light tracking-tighter mb-4 md:mb-10 block">
+                            {/* Text Content Area */}
+                            <div className="w-full h-full md:w-1/2 flex flex-col justify-between py-2 px-4 md:px-6 md:py-8 lg:py-10 lg:pl-10 relative z-10">
+                                <div>
+                                    <span className="font-display text-[#3D3300]/30 text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-2 md:mb-5 block drop-shadow-sm leading-none">
                                         {currentSlide.id}
                                     </span>
-                                    <h3 className="text-[#3D3300] text-4xl md:text-[3.5rem] lg:text-[4rem] font-medium tracking-tight mb-4 md:mb-6 whitespace-pre-line leading-[1.05]">
+                                    <h3 className="text-gray-900 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3 md:mb-5 leading-[1.1] max-w-[95%] group-hover:text-black transition-colors duration-300">
                                         {currentSlide.title}
                                     </h3>
-                                    <p className="text-[#3D3300] text-base md:text-lg leading-[1.6] max-w-[480px] line-clamp-3 mb-8 md:mb-10">
+                                    <p className="text-gray-800 text-sm md:text-lg lg:text-xl leading-relaxed font-medium max-w-[500px] mb-6 md:mb-8 line-clamp-4 md:line-clamp-none">
                                         {currentSlide.description}
                                     </p>
-                                    <button className="bg-black text-white px-8 py-4 rounded-xl font-bold text-sm md:text-base hover:bg-gray-800 transition-colors pointer-events-auto inline-flex items-center gap-2 w-fit">
+                                </div>
+
+                                {/* Learn More Button */}
+                                <div className="mt-auto pb-4 md:pb-0">
+                                    <button className="flex items-center gap-2 bg-black text-[#ffcc00] px-6 py-3.5 md:px-8 md:py-4 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase hover:bg-gray-800 transition-all duration-300 w-fit group/btn shadow-lg active:scale-95">
                                         Learn More
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="group-hover/btn:translate-x-1.5 transition-transform duration-300 md:w-[18px] md:h-[18px]">
+                                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
                                     </button>
                                 </div>
                             </div>
 
-                            {/* Slanted Image Frame on the Right - Absolutely positioned to span to borders over nested padding */}
-                            <div className="w-full md:w-[50%] flex-grow relative overflow-hidden pointer-events-none min-h-[250px] md:min-h-0 md:absolute md:top-0 md:right-0 md:h-full md:w-[60%] z-0"
-                                style={{
-                                    clipPath: typeof window !== 'undefined' && window.innerWidth >= 768 ? 'polygon(15% 0, 100% 0, 100% 100%, 0 100%)' : 'none'
-                                }}
-                            >
-                                <div className="absolute inset-0 bg-[#e6b800]/40 flex flex-col items-center justify-center">
+                            {/* Image Section - Beautiful Leaf/Droplet Frame */}
+                            <div className="w-full h-full md:w-1/2 relative aspect-video md:aspect-auto rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-xl rounded-bl-xl md:rounded-tl-[6rem] md:rounded-br-[6rem] md:rounded-tr-2xl md:rounded-bl-2xl overflow-hidden group shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] border-4 md:border-8 border-white/30">
+                                <div className="absolute inset-0 bg-[#e6b800]/20 flex flex-col items-center justify-center">
                                     <img
                                         src={currentSlide.image}
                                         alt={currentSlide.title}
-                                        className="absolute inset-0 w-full h-full object-cover object-center z-10 transition-opacity duration-300"
+                                        className="absolute inset-0 w-full h-full object-cover object-center z-10 transition-transform duration-[1500ms] ease-out group-hover:scale-[1.03]"
                                         onError={(e) => { e.currentTarget.style.opacity = '0'; }}
                                     />
                                     {/* Placeholder if image fails to load */}
@@ -188,38 +196,26 @@ export default function HowWeWork() {
                         </div>
                     </div>
 
-                    {/* Slider Controls - Glassmorphic Pill */}
-                    <div className="w-full flex justify-end mt-6 pr-2 lg:pr-4">
-                        <div className="flex gap-2 p-1.5 bg-white rounded-full border border-gray-200">
-                            <button
-                                onClick={handlePrev}
-                                className="w-12 h-12 bg-transparent rounded-full flex items-center justify-center text-gray-500 hover:text-black transition-colors"
-                            >
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M15 18l-6-6 6-6" />
-                                </svg>
-                            </button>
-                            <button
-                                onClick={handleNext}
-                                className="w-12 h-12 bg-[#ffcc00] rounded-full flex items-center justify-center text-[#3D3300] hover:bg-[#e6b800] transition-colors"
-                            >
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M9 18l6-6-6-6" />
-                                </svg>
-                            </button>
-                        </div>
+                    {/* Mobile Slider Controls */}
+                    <div className="w-full flex md:hidden justify-center gap-3 mt-6">
+                        <button
+                            onClick={handlePrev}
+                            className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-800 hover:bg-[#ffcc00] hover:text-black transition-all duration-300 border border-black/10 active:scale-95 shadow-sm group"
+                        >
+                            <svg className="w-2 h-3.5 group-hover:-translate-x-0.5 transition-transform duration-300" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.5 15L1.5 8L8.5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </button>
+                        <button
+                            onClick={handleNext}
+                            className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-800 hover:bg-[#ffcc00] hover:text-black transition-all duration-300 border border-black/10 active:scale-95 shadow-sm group"
+                        >
+                            <svg className="w-2 h-3.5 group-hover:translate-x-0.5 transition-transform duration-300" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.5 1L8.5 8L1.5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </button>
                     </div>
 
-                    {/* Static Top-Right White Arrow - Fits perfectly flush with the card box bounds and drops down on hover */}
-                    <div className="hidden md:flex absolute top-0 right-0 z-20 w-16 h-16 items-center justify-center rounded-full bg-[#ffcc00] text-[#3D3300] transition-transform duration-300 hover:translate-y-2 cursor-default"
-                        style={{
-                            boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.05)', // Polish ring
-                        }}
-                    >
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M7 17L17 7M17 7H7M17 7V17" />
-                        </svg>
-                    </div>
                 </div> {/* Closes .hww-card */}
 
             </div> {/* Closes .max-w */}

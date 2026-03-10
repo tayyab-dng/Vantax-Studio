@@ -52,14 +52,14 @@ export default function About() {
     return (
         <section
             ref={containerRef}
-            className="relative w-full py-20 md:py-32 bg-[#ffcc00] overflow-hidden"
+            className="relative w-full py-10 md:py-32 bg-[#ffcc00] overflow-hidden flex flex-col justify-center min-h-[100svh] md:min-h-0"
             style={{ perspective: '1000px' }}
         >
             <InteractiveLinesBackground />
             <div className="relative z-10 max-w-[1440px] mx-auto w-full px-4 md:px-8 lg:px-12 flex flex-col items-start justify-center text-left">
 
                 {/* IEI Pakistan Logo Left Aligned */}
-                <div className="h-[80px] md:h-[100px] mb-12 about-reveal origin-left">
+                <div className="h-[60px] md:h-[100px] mb-6 md:mb-12 about-reveal origin-left mt-10 md:mt-0">
                     <img
                         src="/images/iei-logo.png"
                         alt="IEI Pakistan"
@@ -69,7 +69,7 @@ export default function About() {
                 </div>
 
                 {/* About Text Left Aligned - Dark Text on Yellow */}
-                <div className="font-serif text-[7vw] xs:text-[2.2rem] sm:text-[2.5rem] md:text-[clamp(1.8rem,3vw,3rem)] font-normal leading-[1.3] md:leading-[1.4] tracking-tight text-[#3D3300] space-y-8 w-full max-w-[1050px]">
+                <div className="font-serif text-[7vw] xs:text-[1.8rem] sm:text-[2.2rem] md:text-[clamp(1.8rem,3vw,3rem)] font-normal leading-[1.25] md:leading-[1.4] tracking-tight text-[#3D3300] space-y-4 md:space-y-8 w-full max-w-[1050px]">
                     <div className="overflow-hidden">
                         <p className="about-reveal">
                             We're a <span className="font-bold italic transition-colors duration-500 about-highlight">non-profit organization</span> founded in 2016 to transform education in remote Pakistan.
@@ -83,16 +83,16 @@ export default function About() {
                 </div>
 
                 {/* Left Aligned Black Buttons Component */}
-                <div className="mt-14 flex flex-col sm:flex-row gap-4 justify-start items-start w-full about-reveal pt-4">
+                <div className="mt-8 md:mt-14 flex flex-col sm:flex-row gap-3 md:gap-4 justify-start items-start w-full about-reveal pt-2 md:pt-4">
                     <a
                         href="/join-our-work/donate"
-                        className="w-full sm:w-auto px-10 py-4 bg-[#1A1600] text-white font-semibold rounded-lg text-lg hover:bg-[#2A2400] hover:scale-105 active:scale-95 hover:shadow-2xl transition-all duration-300 flex justify-center items-center text-center group"
+                        className="w-full sm:w-auto px-10 py-3.5 md:py-4 bg-[#1A1600] text-white font-semibold rounded-lg text-base md:text-lg hover:bg-[#2A2400] hover:scale-105 active:scale-95 hover:shadow-2xl transition-all duration-300 flex justify-center items-center text-center group"
                     >
                         Donate Now
                     </a>
                     <a
                         href="/about-us"
-                        className="w-full sm:w-auto px-9 py-[14px] bg-transparent text-[#1A1600] font-semibold rounded-lg text-lg border-2 border-[#1A1600] hover:bg-[#1A1600] hover:text-white active:scale-95 transition-all duration-300 flex justify-center items-center text-center"
+                        className="w-full sm:w-auto px-9 py-[12px] md:py-[14px] bg-transparent text-[#1A1600] font-semibold rounded-lg text-base md:text-lg border-2 border-[#1A1600] hover:bg-[#1A1600] hover:text-white active:scale-95 transition-all duration-300 flex justify-center items-center text-center"
                     >
                         Learn Our Story
                     </a>
