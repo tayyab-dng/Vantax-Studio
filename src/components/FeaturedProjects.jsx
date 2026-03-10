@@ -99,15 +99,6 @@ export default function FeaturedProjects() {
         if (!emblaApi) return;
         onSelect(emblaApi);
         emblaApi.on('reInit', onSelect).on('select', onSelect);
-
-        // Auto-play interval
-        const autoplayId = setInterval(() => {
-            if (emblaApi) {
-                emblaApi.scrollNext();
-            }
-        }, 4000); // changes slide every 4 seconds for readability
-
-        return () => clearInterval(autoplayId);
     }, [emblaApi, onSelect]);
 
     return (
